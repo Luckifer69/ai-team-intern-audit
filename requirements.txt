@@ -1,0 +1,10 @@
+# Python 3.12 (tested with CPython 3.12.15). Part B needs only the standard library.
+tiktoken==0.14.0          # gpt2, o200k_base
+tokenizers==0.23.3        # sarvamai/sarvam-1 tokenizer.json
+huggingface-hub==2.2.0    # tokenizer download (dependency of tokenizers)
+regex==2026.9.29          # \X grapheme clusters
+# Optional: only for running the ORIGINAL fertility.py with hf:<repo> and the
+# tokenizers-vs-transformers equivalence check (NOTEBOOK Entry 9). No torch needed.
+transformers==5.20.2
+# Optional: tools/render_memo.py (one-page memo check; also needs LibreOffice `soffice`).
+markdown==3.7

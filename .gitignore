@@ -1,0 +1,32 @@
+# Python virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Byte-code / caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Model and tokenizer downloads / caches
+.hf_cache/
+.tiktoken_cache/
+partA/data/raw/
+
+# System and OS files
+.DS_Store
+Thumbs.db
+__MACOSX/
+
+# Archives and build artifacts
+*.zip
+*.tar.gz
+
+# Editor and IDE directories
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
