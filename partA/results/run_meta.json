@@ -1,0 +1,24 @@
+{
+  "tokenizers": {
+    "gpt2": "tiktoken:gpt2",
+    "o200k": "tiktoken:o200k_base",
+    "sarvam1": "hf:sarvamai/sarvam-1@e9607337286ddf496d4a2562b194e489dcf3feea"
+  },
+  "corpora": {
+    "eng_Latn": "C:\\Users\\divya\\OneDrive\\Documents\\Flam Assignment\\AI-Assignment\\ai-team-intern-audit\\partA\\data\\flores200_devtest\\eng_Latn.txt",
+    "hin_Deva": "C:\\Users\\divya\\OneDrive\\Documents\\Flam Assignment\\AI-Assignment\\ai-team-intern-audit\\partA\\data\\flores200_devtest\\hin_Deva.txt",
+    "kan_Knda": "C:\\Users\\divya\\OneDrive\\Documents\\Flam Assignment\\AI-Assignment\\ai-team-intern-audit\\partA\\data\\flores200_devtest\\kan_Knda.txt",
+    "tam_Taml": "C:\\Users\\divya\\OneDrive\\Documents\\Flam Assignment\\AI-Assignment\\ai-team-intern-audit\\partA\\data\\flores200_devtest\\tam_Taml.txt",
+    "tel_Telu": "C:\\Users\\divya\\OneDrive\\Documents\\Flam Assignment\\AI-Assignment\\ai-team-intern-audit\\partA\\data\\flores200_devtest\\tel_Telu.txt",
+    "mal_Mlym": "C:\\Users\\divya\\OneDrive\\Documents\\Flam Assignment\\AI-Assignment\\ai-team-intern-audit\\partA\\data\\flores200_devtest\\mal_Mlym.txt",
+    "ben_Beng": "C:\\Users\\divya\\OneDrive\\Documents\\Flam Assignment\\AI-Assignment\\ai-team-intern-audit\\partA\\data\\flores200_devtest\\ben_Beng.txt",
+    "mar_Deva": "C:\\Users\\divya\\OneDrive\\Documents\\Flam Assignment\\AI-Assignment\\ai-team-intern-audit\\partA\\data\\flores200_devtest\\mar_Deva.txt"
+  },
+  "base": "eng_Latn",
+  "bootstrap": {
+    "reps": 1000,
+    "seed": 0
+  },
+  "ref_tokenizer": "o200k",
+  "text_processing": "outer whitespace stripped; no lowercasing; no NFC (NFC is a sensitivity column); no special tokens"
+}

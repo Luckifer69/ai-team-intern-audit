@@ -1,0 +1,452 @@
+{
+  "source": {
+    "name": "FLORES-200 (original NLLB release, 2022)",
+    "url": "https://dl.fbaipublicfiles.com/nllb/flores200_dataset.tar.gz",
+    "tarball_sha256": "b8b0b76783024b85797e5cc75064eb83fc5288b41e9654dabc7be6ae944011f6",
+    "split": "devtest",
+    "license": "CC-BY-SA 4.0 (per github.com/facebookresearch/flores README, 'Licenses')",
+    "citation": "NLLB Team et al. (2022), No Language Left Behind: Scaling Human-Centered Machine Translation; Goyal et al. (2021), The FLORES-101 Evaluation Benchmark."
+  },
+  "transformations": "verbatim copy of each line; trailing newline removed; nothing else",
+  "aligned_sentences": 1012,
+  "domains": {
+    "wikinews": 341,
+    "wikibooks": 351,
+    "wikivoyage": 320
+  },
+  "files": {
+    "eng_Latn": {
+      "path": "eng_Latn.txt",
+      "sha256": "612e9fbe87997617c0fa8fa8929654a4f49b728d96738112c2b86ef6a1d78d88",
+      "lines": 1012
+    },
+    "hin_Deva": {
+      "path": "hin_Deva.txt",
+      "sha256": "5f5fd39acadca29fb044a0398e81869e48f37de979df086f2fad4a7d1fd2d015",
+      "lines": 1012
+    },
+    "kan_Knda": {
+      "path": "kan_Knda.txt",
+      "sha256": "58e8ed5ef79cfd9994e7d4010d22b5ce72c3559f0c8e988fbde11fa58a720cd8",
+      "lines": 1012
+    },
+    "tam_Taml": {
+      "path": "tam_Taml.txt",
+      "sha256": "a18b26bf278e458f085c70173d6789d6108cb2e3346c81a1bd0f8aceb4ea30e4",
+      "lines": 1012
+    },
+    "tel_Telu": {
+      "path": "tel_Telu.txt",
+      "sha256": "2dc641b4fb69347efe4b0c0f2063372c643f20c664b41a1f4421b69ba2a06420",
+      "lines": 1012
+    },
+    "mal_Mlym": {
+      "path": "mal_Mlym.txt",
+      "sha256": "fe08cf95fc451a0c462224539a7070695b7bf0b36d586679d33ae871e7b7dfb6",
+      "lines": 1012
+    },
+    "ben_Beng": {
+      "path": "ben_Beng.txt",
+      "sha256": "6699aa77b4c93d520971868cd5ff06a1e3b5ddfde852da13337f5194bc23086f",
+      "lines": 1012
+    },
+    "mar_Deva": {
+      "path": "mar_Deva.txt",
+      "sha256": "63d0d1bfdcfa7f8a1538c87cab65b0e5e010515529ed286b1f8b2a51cc62b99f",
+      "lines": 1012
+    }
+  },
+  "checks": {
+    "eng_Latn": {
+      "empty_lines": 0,
+      "duplicate_lines": 0,
+      "lines_not_NFC": 0,
+      "lines_with_double_space": 0,
+      "lines_with_leading_or_trailing_ws": 0,
+      "lines_with_non_space_whitespace": 0,
+      "expected_script_letter_share_mean": 1.0,
+      "lines_with_expected_script_share_below_0.5": 0
+    },
+    "hin_Deva": {
+      "empty_lines": 0,
+      "duplicate_lines": 0,
+      "lines_not_NFC": 93,
+      "lines_with_double_space": 6,
+      "lines_with_leading_or_trailing_ws": 18,
+      "lines_with_non_space_whitespace": 0,
+      "expected_script_letter_share_mean": 0.9963,
+      "lines_with_expected_script_share_below_0.5": 0
+    },
+    "kan_Knda": {
+      "empty_lines": 0,
+      "duplicate_lines": 0,
+      "lines_not_NFC": 7,
+      "lines_with_double_space": 213,
+      "lines_with_leading_or_trailing_ws": 83,
+      "lines_with_non_space_whitespace": 0,
+      "expected_script_letter_share_mean": 0.995,
+      "lines_with_expected_script_share_below_0.5": 0
+    },
+    "tam_Taml": {
+      "empty_lines": 0,
+      "duplicate_lines": 0,
+      "lines_not_NFC": 2,
+      "lines_with_double_space": 75,
+      "lines_with_leading_or_trailing_ws": 0,
+      "lines_with_non_space_whitespace": 0,
+      "expected_script_letter_share_mean": 0.9948,
+      "lines_with_expected_script_share_below_0.5": 0
+    },
+    "tel_Telu": {
+      "empty_lines": 0,
+      "duplicate_lines": 0,
+      "lines_not_NFC": 1,
+      "lines_with_double_space": 136,
+      "lines_with_leading_or_trailing_ws": 30,
+      "lines_with_non_space_whitespace": 0,
+      "expected_script_letter_share_mean": 0.9771,
+      "lines_with_expected_script_share_below_0.5": 3
+    },
+    "mal_Mlym": {
+      "empty_lines": 0,
+      "duplicate_lines": 0,
+      "lines_not_NFC": 4,
+      "lines_with_double_space": 54,
+      "lines_with_leading_or_trailing_ws": 0,
+      "lines_with_non_space_whitespace": 0,
+      "expected_script_letter_share_mean": 0.9982,
+      "lines_with_expected_script_share_below_0.5": 0
+    },
+    "ben_Beng": {
+      "empty_lines": 0,
+      "duplicate_lines": 0,
+      "lines_not_NFC": 609,
+      "lines_with_double_space": 71,
+      "lines_with_leading_or_trailing_ws": 0,
+      "lines_with_non_space_whitespace": 0,
+      "expected_script_letter_share_mean": 0.9962,
+      "lines_with_expected_script_share_below_0.5": 0
+    },
+    "mar_Deva": {
+      "empty_lines": 0,
+      "duplicate_lines": 0,
+      "lines_not_NFC": 0,
+      "lines_with_double_space": 67,
+      "lines_with_leading_or_trailing_ws": 184,
+      "lines_with_non_space_whitespace": 0,
+      "expected_script_letter_share_mean": 0.9965,
+      "lines_with_expected_script_share_below_0.5": 0
+    }
+  },
+  "length_stats_per_sentence": {
+    "eng_Latn": {
+      "whitespace_words": {
+        "mean": 21.64,
+        "median": 21.0,
+        "p5": 11,
+        "p95": 34,
+        "min": 7,
+        "max": 60,
+        "total": 21901
+      },
+      "code_points": {
+        "mean": 130.4,
+        "median": 124.0,
+        "p5": 69,
+        "p95": 205,
+        "min": 35,
+        "max": 368,
+        "total": 131966
+      },
+      "graphemes": {
+        "mean": 130.4,
+        "median": 124.0,
+        "p5": 69,
+        "p95": 205,
+        "min": 35,
+        "max": 368,
+        "total": 131966
+      },
+      "utf8_bytes": {
+        "mean": 130.53,
+        "median": 124.5,
+        "p5": 69,
+        "p95": 205,
+        "min": 35,
+        "max": 368,
+        "total": 132096
+      }
+    },
+    "hin_Deva": {
+      "whitespace_words": {
+        "mean": 25.34,
+        "median": 25.0,
+        "p5": 13,
+        "p95": 41,
+        "min": 8,
+        "max": 67,
+        "total": 25643
+      },
+      "code_points": {
+        "mean": 129.52,
+        "median": 124.0,
+        "p5": 67,
+        "p95": 208,
+        "min": 41,
+        "max": 381,
+        "total": 131079
+      },
+      "graphemes": {
+        "mean": 84.96,
+        "median": 82.0,
+        "p5": 44,
+        "p95": 137,
+        "min": 25,
+        "max": 244,
+        "total": 85978
+      },
+      "utf8_bytes": {
+        "mean": 333.1,
+        "median": 319.5,
+        "p5": 172,
+        "p95": 541,
+        "min": 103,
+        "max": 983,
+        "total": 337094
+      }
+    },
+    "kan_Knda": {
+      "whitespace_words": {
+        "mean": 15.91,
+        "median": 15.0,
+        "p5": 8,
+        "p95": 26,
+        "min": 5,
+        "max": 45,
+        "total": 16100
+      },
+      "code_points": {
+        "mean": 136.5,
+        "median": 129.0,
+        "p5": 70,
+        "p95": 221,
+        "min": 43,
+        "max": 388,
+        "total": 138140
+      },
+      "graphemes": {
+        "mean": 89.4,
+        "median": 84.0,
+        "p5": 45,
+        "p95": 145,
+        "min": 28,
+        "max": 257,
+        "total": 90471
+      },
+      "utf8_bytes": {
+        "mean": 371.03,
+        "median": 352.5,
+        "p5": 186,
+        "p95": 600,
+        "min": 115,
+        "max": 1060,
+        "total": 375480
+      }
+    },
+    "tam_Taml": {
+      "whitespace_words": {
+        "mean": 16.58,
+        "median": 16.0,
+        "p5": 9,
+        "p95": 26,
+        "min": 4,
+        "max": 42,
+        "total": 16775
+      },
+      "code_points": {
+        "mean": 152.31,
+        "median": 146.0,
+        "p5": 80,
+        "p95": 247,
+        "min": 48,
+        "max": 404,
+        "total": 154133
+      },
+      "graphemes": {
+        "mean": 98.54,
+        "median": 95.0,
+        "p5": 51,
+        "p95": 159,
+        "min": 32,
+        "max": 257,
+        "total": 99724
+      },
+      "utf8_bytes": {
+        "mean": 416.64,
+        "median": 398.5,
+        "p5": 215,
+        "p95": 665,
+        "min": 130,
+        "max": 1122,
+        "total": 421641
+      }
+    },
+    "tel_Telu": {
+      "whitespace_words": {
+        "mean": 16.74,
+        "median": 16.0,
+        "p5": 9,
+        "p95": 26,
+        "min": 5,
+        "max": 44,
+        "total": 16938
+      },
+      "code_points": {
+        "mean": 130.93,
+        "median": 125.0,
+        "p5": 66,
+        "p95": 207,
+        "min": 39,
+        "max": 359,
+        "total": 132505
+      },
+      "graphemes": {
+        "mean": 75.69,
+        "median": 72.0,
+        "p5": 38,
+        "p95": 122,
+        "min": 23,
+        "max": 202,
+        "total": 76602
+      },
+      "utf8_bytes": {
+        "mean": 349.52,
+        "median": 334.0,
+        "p5": 178,
+        "p95": 552,
+        "min": 99,
+        "max": 969,
+        "total": 353711
+      }
+    },
+    "mal_Mlym": {
+      "whitespace_words": {
+        "mean": 14.75,
+        "median": 14.0,
+        "p5": 8,
+        "p95": 23,
+        "min": 5,
+        "max": 42,
+        "total": 14930
+      },
+      "code_points": {
+        "mean": 147.57,
+        "median": 141.0,
+        "p5": 74,
+        "p95": 234,
+        "min": 48,
+        "max": 376,
+        "total": 149336
+      },
+      "graphemes": {
+        "mean": 78.49,
+        "median": 74.0,
+        "p5": 39,
+        "p95": 125,
+        "min": 25,
+        "max": 201,
+        "total": 79428
+      },
+      "utf8_bytes": {
+        "mean": 406.87,
+        "median": 389.5,
+        "p5": 203,
+        "p95": 650,
+        "min": 132,
+        "max": 1025,
+        "total": 411753
+      }
+    },
+    "ben_Beng": {
+      "whitespace_words": {
+        "mean": 19.27,
+        "median": 18.0,
+        "p5": 10,
+        "p95": 31,
+        "min": 6,
+        "max": 52,
+        "total": 19506
+      },
+      "code_points": {
+        "mean": 127.51,
+        "median": 121.0,
+        "p5": 65,
+        "p95": 203,
+        "min": 38,
+        "max": 333,
+        "total": 129042
+      },
+      "graphemes": {
+        "mean": 80.72,
+        "median": 76.0,
+        "p5": 42,
+        "p95": 131,
+        "min": 23,
+        "max": 201,
+        "total": 81693
+      },
+      "utf8_bytes": {
+        "mean": 340.59,
+        "median": 323.0,
+        "p5": 175,
+        "p95": 547,
+        "min": 99,
+        "max": 909,
+        "total": 344682
+      }
+    },
+    "mar_Deva": {
+      "whitespace_words": {
+        "mean": 18.82,
+        "median": 18.0,
+        "p5": 10,
+        "p95": 30,
+        "min": 6,
+        "max": 45,
+        "total": 19046
+      },
+      "code_points": {
+        "mean": 131.67,
+        "median": 127.0,
+        "p5": 67,
+        "p95": 210,
+        "min": 34,
+        "max": 356,
+        "total": 133252
+      },
+      "graphemes": {
+        "mean": 79.53,
+        "median": 76.0,
+        "p5": 41,
+        "p95": 129,
+        "min": 24,
+        "max": 211,
+        "total": 80489
+      },
+      "utf8_bytes": {
+        "mean": 351.49,
+        "median": 338.5,
+        "p5": 178,
+        "p95": 563,
+        "min": 88,
+        "max": 952,
+        "total": 355712
+      }
+    }
+  },
+  "tool_versions": {
+    "python": "3.12.15",
+    "unicodedata": "15.0.0",
+    "regex": "2026.9.29"
+  }
+}

@@ -1,0 +1,10 @@
+These 8 files (eng_Latn, hin_Deva, kan_Knda, tam_Taml, tel_Telu, mal_Mlym, ben_Beng, mar_Deva .txt)
+are the unmodified devtest split of FLORES-200 (original 2022 NLLB release), extracted from
+https://dl.fbaipublicfiles.com/nllb/flores200_dataset.tar.gz
+(sha256 b8b0b76783024b85797e5cc75064eb83fc5288b41e9654dabc7be6ae944011f6) on 2026-10-22.
+
+FLORES-200 is licensed under CC-BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/),
+per github.com/facebookresearch/flores. Redistributed here under the same license.
+Credit: NLLB Team et al. (2022), "No Language Left Behind: Scaling Human-Centered Machine Translation";
+Goyal et al. (2021), "The FLORES-101 Evaluation Benchmark for Low-Resource and Multilingual Machine Translation".
+The files are byte-identical to the tarball members flores200_dataset/devtest/<lang>.devtest (sha256 checked).

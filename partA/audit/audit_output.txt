@@ -1,0 +1,260 @@
+E0  harness reproduces original analyze() bit-for-bit (gpt2, original loader)
+  sample:eng   original=(1.265206, 0.225636)  identical=True
+  sample:hin   original=(7.448452, 1.579108)  identical=True
+  eng_Latn     original=(1.287365, 0.214055)  identical=True
+  hin_Deva     original=(7.865102, 1.529260)  identical=True
+  kan_Knda     original=(22.569814, 2.659896)  identical=True
+  tam_Taml     original=(25.127005, 2.723941)  identical=True
+  tel_Telu     original=(20.565612, 2.645165)  identical=True
+  mal_Mlym     original=(27.584493, 2.743039)  identical=True
+  ben_Beng     original=(13.384791, 1.993047)  identical=True
+  mar_Deva     original=(11.186048, 1.596265)  identical=True
+
+E1  words = line.split(' ')  ->  line.split()   [only the word denominator changes]
+  minimal: 'please keep the books  in the cupboard.': split(' ') -> 8 words ['please', 'keep', 'the', 'books', '', 'in', 'the', 'cupboard.'], split() -> 7
+  tokenizer corpus              fert_v0       fert_new fert_delta_pct       words_v0      words_new
+  gpt2      sample:eng           1.2652         1.2831         1.4114             79             78
+  gpt2      sample:hin           7.4485         7.5985         2.0138             62             61
+  gpt2      eng_Latn             1.2874         1.2874         0.0000          21901          21901
+  gpt2      hin_Deva             7.8651         7.8669         0.0226          25649          25643
+  gpt2      kan_Knda            22.5698        23.0193         1.9914          16477          16100
+  gpt2      tam_Taml            25.1270        25.2523         0.4985          16875          16775
+  gpt2      tel_Telu            20.5656        20.8298         1.2848          17177          16938
+  gpt2      mal_Mlym            27.5845        27.6894         0.3802          15001          14930
+  gpt2      ben_Beng            13.3848        13.4383         0.3997          19586          19506
+  gpt2      mar_Deva            11.1860        11.2255         0.3531          19127          19046
+  o200k     eng_Latn             1.2557         1.2557         0.0000          21901          21901
+  o200k     hin_Deva             1.6694         1.6698         0.0256          25649          25643
+  o200k     kan_Knda             3.2550         3.3227         2.0793          16477          16100
+  o200k     tam_Taml             3.1827         3.1997         0.5328          16875          16775
+  o200k     tel_Telu             3.0564         3.0962         1.3016          17177          16938
+  o200k     mal_Mlym             3.5439         3.5584         0.4075          15001          14930
+  o200k     ben_Beng             2.3846         2.3942         0.4047          19586          19506
+  o200k     mar_Deva             2.5763         2.5854         0.3514          19127          19046
+  sarvam1   eng_Latn             1.4705         1.4705         0.0000          21901          21901
+  sarvam1   hin_Deva             1.3992         1.3996         0.0301          25649          25643
+  sarvam1   kan_Knda             2.3385         2.3910         2.2465          16477          16100
+  sarvam1   tam_Taml             2.1746         2.1869         0.5629          16875          16775
+  sarvam1   tel_Telu             2.1406         2.1697         1.3603          17177          16938
+  sarvam1   mal_Mlym             2.8745         2.8869         0.4329          15001          14930
+  sarvam1   ben_Beng             1.8176         1.8251         0.4106          19586          19506
+  sarvam1   mar_Deva             1.7788         1.7855         0.3763          19127          19046
+
+E2  lower=True -> lower=False   [only the text fed to the tokenizer changes]
+  minimal [gpt2] 'NASA and ISRO announced a joint mission update.': original case 10 tokens, lowercased 11
+  minimal [gpt2] 'Bengaluru International Airport handled record traffic in March.': original case 12 tokens, lowercased 12
+  minimal [o200k] 'NASA and ISRO announced a joint mission update.': original case 10 tokens, lowercased 11
+  minimal [o200k] 'Bengaluru International Airport handled record traffic in March.': original case 12 tokens, lowercased 12
+  minimal [sarvam1] 'NASA and ISRO announced a joint mission update.': original case 10 tokens, lowercased 11
+  minimal [sarvam1] 'Bengaluru International Airport handled record traffic in March.': original case 15 tokens, lowercased 15
+  tokenizer corpus            tokens_v0     tokens_new fert_delta_pct  tpc_delta_pct
+  gpt2      sample:eng               99             96        -2.8356        -2.6917
+  gpt2      sample:hin              459            459         0.0000         0.0000
+  gpt2      eng_Latn              27994          27044        -3.3353        -3.2949
+  gpt2      hin_Deva             200696         200688        -0.0045        -0.0046
+  gpt2      kan_Knda             367388         367366        -0.0055        -0.0064
+  gpt2      tam_Taml             420194         420171        -0.0058        -0.0063
+  gpt2      tel_Telu             350848         350748        -0.0283        -0.0273
+  gpt2      mal_Mlym             409994         409983        -0.0025        -0.0030
+  gpt2      ben_Beng             259783         259769        -0.0054        -0.0054
+  gpt2      mar_Deva             212489         212471        -0.0070        -0.0073
+  o200k     eng_Latn              27300          26873        -1.5702        -1.5269
+  o200k     hin_Deva              42248          42247        -0.0012        -0.0013
+  o200k     kan_Knda              52893          52886        -0.0128        -0.0143
+  o200k     tam_Taml              53201          53195        -0.0095        -0.0130
+  o200k     tel_Telu              51892          51841        -0.0925        -0.0878
+  o200k     mal_Mlym              52588          52580        -0.0118        -0.0131
+  o200k     ben_Beng              46009          46011         0.0089         0.0079
+  o200k     mar_Deva              48786          48783         0.0014         0.0014
+  sarvam1   eng_Latn              31914          31422        -1.4399        -1.4769
+  sarvam1   hin_Deva              35551          35554         0.0063         0.0071
+  sarvam1   kan_Knda              38163          38153        -0.0132        -0.0174
+  sarvam1   tam_Taml              36389          36386        -0.0053        -0.0063
+  sarvam1   tel_Telu              36244          36209        -0.1000        -0.1018
+  sarvam1   mal_Mlym              42624          42621        -0.0070        -0.0084
+  sarvam1   ben_Beng              35149          35150         0.0063         0.0051
+  sarvam1   mar_Deva              33669          33666        -0.0028        -0.0017
+
+E3  agg=line_mean -> agg=pooled (sum tokens / sum units)
+  tokenizer corpus              fert_v0       fert_new fert_delta_pct         tpc_v0        tpc_new  tpc_delta_pct
+  gpt2      sample:eng           1.2652         1.2532        -0.9517         0.2256         0.2210        -2.0625
+  gpt2      sample:hin           7.4485         7.4032        -0.6072         1.5791         1.5828         0.2312
+  gpt2      eng_Latn             1.2874         1.2782        -0.7114         0.2141         0.2121        -0.8998
+  gpt2      hin_Deva             7.8651         7.8247        -0.5136         1.5293         1.5299         0.0437
+  gpt2      kan_Knda            22.5698        22.2970        -1.2087         2.6599         2.6617         0.0682
+  gpt2      tam_Taml            25.1270        24.9004        -0.9019         2.7239         2.7262         0.0834
+  gpt2      tel_Telu            20.5656        20.4255        -0.6815         2.6452         2.6486         0.1302
+  gpt2      mal_Mlym            27.5845        27.3311        -0.9186         2.7430         2.7455         0.0904
+  gpt2      ben_Beng            13.3848        13.2637        -0.9046         1.9930         1.9923        -0.0355
+  gpt2      mar_Deva            11.1860        11.1094        -0.6854         1.5963         1.5970         0.0491
+  o200k     eng_Latn             1.2557         1.2465        -0.7340         0.2090         0.2069        -1.0030
+  o200k     hin_Deva             1.6694         1.6472        -1.3323         0.3250         0.3221        -0.9110
+  o200k     kan_Knda             3.2550         3.2101        -1.3793         0.3853         0.3832        -0.5456
+  o200k     tam_Taml             3.1827         3.1527        -0.9440         0.3463         0.3452        -0.3373
+  o200k     tel_Telu             3.0564         3.0210        -1.1571         0.3939         0.3917        -0.5529
+  o200k     mal_Mlym             3.5439         3.5056        -1.0810         0.3543         0.3522        -0.6103
+  o200k     ben_Beng             2.3846         2.3491        -1.4894         0.3554         0.3529        -0.7196
+  o200k     mar_Deva             2.5763         2.5506        -0.9966         0.3691         0.3667        -0.6706
+  sarvam1   eng_Latn             1.4705         1.4572        -0.9056         0.2441         0.2418        -0.9114
+  sarvam1   hin_Deva             1.3992         1.3861        -0.9397         0.2735         0.2710        -0.8975
+  sarvam1   kan_Knda             2.3385         2.3161        -0.9560         0.2783         0.2765        -0.6404
+  sarvam1   tam_Taml             2.1746         2.1564        -0.8397         0.2376         0.2361        -0.6281
+  sarvam1   tel_Telu             2.1406         2.1100        -1.4275         0.2765         0.2736        -1.0332
+  sarvam1   mal_Mlym             2.8745         2.8414        -1.1511         0.2883         0.2854        -0.9886
+  sarvam1   ben_Beng             1.8176         1.7946        -1.2661         0.2719         0.2696        -0.8602
+  sarvam1   mar_Deva             1.7788         1.7603        -1.0408         0.2557         0.2531        -1.0233
+
+E4  char=code_points -> graphemes / utf8 bytes (tok_per_char only)
+  minimal 'books': code points=5, graphemes=5, bytes=5
+  minimal 'किताबें': code points=7, graphemes=3, bytes=21
+  minimal 'ಪುಸ್ತಕ': code points=6, graphemes=4, bytes=18
+  minimal 'புத்தகம்': code points=8, graphemes=5, bytes=24
+  -> char=graphemes
+  tokenizer corpus               tpc_v0        tpc_new  tpc_delta_pct
+  gpt2      sample:eng           0.2256         0.2256         0.0000
+  gpt2      sample:hin           1.5791         2.4497        55.1339
+  gpt2      eng_Latn             0.2141         0.2141         0.0007
+  gpt2      hin_Deva             1.5293         2.3406        53.0548
+  gpt2      kan_Knda             2.6599         4.0656        52.8498
+  gpt2      tam_Taml             2.7239         4.2148        54.7311
+  gpt2      tel_Telu             2.6452         4.6052        74.0989
+  gpt2      mal_Mlym             2.7430         5.1760        88.6958
+  gpt2      ben_Beng             1.9930         3.1887        59.9896
+  gpt2      mar_Deva             1.5963         2.6490        65.9502
+  o200k     eng_Latn             0.2090         0.2090         0.0008
+  o200k     hin_Deva             0.3250         0.4962        52.6749
+  o200k     kan_Knda             0.3853         0.5884        52.7116
+  o200k     tam_Taml             0.3463         0.5353        54.5490
+  o200k     tel_Telu             0.3939         0.6830        73.3837
+  o200k     mal_Mlym             0.3543         0.6660        87.9593
+  o200k     ben_Beng             0.3554         0.5674        59.6407
+  o200k     mar_Deva             0.3691         0.6104        65.3626
+  sarvam1   eng_Latn             0.2441         0.2441         0.0007
+  sarvam1   hin_Deva             0.2735         0.4164        52.2639
+  sarvam1   kan_Knda             0.2783         0.4248        52.6417
+  sarvam1   tam_Taml             0.2376         0.3666        54.3036
+  sarvam1   tel_Telu             0.2765         0.4774        72.6737
+  sarvam1   mal_Mlym             0.2883         0.5410        87.6471
+  sarvam1   ben_Beng             0.2719         0.4332        59.3108
+  sarvam1   mar_Deva             0.2557         0.4219        65.0286
+  -> char=bytes
+  tokenizer corpus               tpc_v0        tpc_new  tpc_delta_pct
+  gpt2      sample:eng           0.2256         0.2256         0.0000
+  gpt2      sample:hin           1.5791         0.5990       -62.0677
+  gpt2      eng_Latn             0.2141         0.2138        -0.0961
+  gpt2      hin_Deva             1.5293         0.5948       -61.1071
+  gpt2      kan_Knda             2.6599         0.9786       -63.2075
+  gpt2      tam_Taml             2.7239         0.9962       -63.4283
+  gpt2      tel_Telu             2.6452         0.9910       -62.5355
+  gpt2      mal_Mlym             2.7430         0.9955       -63.7090
+  gpt2      ben_Beng             1.9930         0.7446       -62.6400
+  gpt2      mar_Deva             1.5963         0.5978       -62.5522
+  o200k     eng_Latn             0.2090         0.2088        -0.0930
+  o200k     hin_Deva             0.3250         0.1266       -61.0367
+  o200k     kan_Knda             0.3853         0.1420       -63.1401
+  o200k     tam_Taml             0.3463         0.1269       -63.3617
+  o200k     tel_Telu             0.3939         0.1480       -62.4268
+  o200k     mal_Mlym             0.3543         0.1288       -63.6359
+  o200k     ben_Beng             0.3554         0.1330       -62.5924
+  o200k     mar_Deva             0.3691         0.1385       -62.4905
+  sarvam1   eng_Latn             0.2441         0.2438        -0.0963
+  sarvam1   hin_Deva             0.2735         0.1067       -60.9705
+  sarvam1   kan_Knda             0.2783         0.1028       -63.0754
+  sarvam1   tam_Taml             0.2376         0.0872       -63.2889
+  sarvam1   tel_Telu             0.2765         0.1043       -62.2850
+  sarvam1   mal_Mlym             0.2883         0.1050       -63.5916
+  sarvam1   ben_Beng             0.2719         0.1019       -62.5363
+  sarvam1   mar_Deva             0.2557         0.0961       -62.4264
+  hin/eng ratio of tok-per-<unit> on the samples (gpt2), v0 line-mean aggregation:
+    per code_points  hin/eng = 7.00x
+    per graphemes    hin/eng = 10.86x
+    per bytes        hin/eng = 2.65x
+
+E5  per-word ratio vs same-content token premium (same token counts; only the denominator differs)
+  [gpt2] lang   per-word ratio  premium distortion W_eng/W_L  distortion (v0 text)
+         eng             1.000    1.000      +0.0%     1.000                 +0.0%
+         hin             6.331    7.413     -14.6%     0.854                -14.6%
+         kan            18.480   13.585     +36.0%     1.360                +32.9%
+         tam            20.284   15.537     +30.6%     1.306                +29.8%
+         tel            16.770   12.970     +29.3%     1.293                +27.5%
+         mal            22.239   15.160     +46.7%     1.467                +46.0%
+         ben            10.730    9.557     +12.3%     1.123                +11.8%
+         mar             9.034    7.856     +15.0%     1.150                +14.5%
+  [o200k] lang   per-word ratio  premium distortion W_eng/W_L  distortion (v0 text)
+          eng             1.000    1.000      +0.0%     1.000                 +0.0%
+          hin             1.344    1.573     -14.6%     0.854                -14.6%
+          kan             2.678    1.969     +36.0%     1.360                +32.9%
+          tam             2.585    1.980     +30.6%     1.306                +29.8%
+          tel             2.495    1.929     +29.3%     1.293                +27.5%
+          mal             2.870    1.957     +46.7%     1.467                +46.0%
+          ben             1.905    1.697     +12.3%     1.123                +11.8%
+          mar             2.087    1.815     +15.0%     1.150                +14.5%
+  [sarvam1] lang   per-word ratio  premium distortion W_eng/W_L  distortion (v0 text)
+            eng             1.000    1.000      +0.0%     1.000                 +0.0%
+            hin             0.977    1.144     -14.6%     0.854                -14.6%
+            kan             1.653    1.215     +36.0%     1.360                +32.9%
+            tam             1.512    1.158     +30.6%     1.306                +29.8%
+            tel             1.491    1.153     +29.3%     1.293                +27.5%
+            mal             1.990    1.357     +46.7%     1.467                +46.0%
+            ben             1.439    1.282     +12.3%     1.123                +11.8%
+            mar             1.232    1.071     +15.0%     1.150                +14.5%
+  Part 2 (COMBINED correction, not isolated): v0 pipeline headline vs corrected premium
+  [gpt2] eng 1.00->1.00  hin 6.11->7.41  kan 17.53->13.59  tam 19.52->15.54  tel 15.97->12.97  mal 21.43->15.16  ben 10.40->9.56  mar 8.69->7.86
+  [o200k] eng 1.00->1.00  hin 1.33->1.57  kan 2.59->1.97  tam 2.53->1.98  tel 2.43->1.93  mal 2.82->1.96  ben 1.90->1.70  mar 2.05->1.82
+  [sarvam1] eng 1.00->1.00  hin 0.95->1.14  kan 1.59->1.22  tam 1.48->1.16  tel 1.46->1.15  mal 1.95->1.36  ben 1.24->1.28  mar 1.21->1.07
+
+E6  delete `import random` + `random.seed(1337)` and diff full script output
+  lines mentioning 'random': ['import random', 'random.seed(1337)  # reproducibility']
+  removed 2 lines; output identical: True; original run twice identical: True
+
+E7  nfc=True -> nfc=False   [only the normalisation step changes]
+  minimal U+095B -> NFC U+091C U+093C; tokens gpt2: 2->4, o200k: 1->1, sarvam1: 4->1
+  minimal U+09DF -> NFC U+09AF U+09BC; tokens gpt2: 3->4, o200k: 1->1, sarvam1: 4->2
+  tokenizer corpus            tokens_v0     tokens_new fert_delta_pct  tpc_delta_pct
+  gpt2      sample:eng               99             99         0.0000         0.0000
+  gpt2      sample:hin              459            459         0.0000         0.0000
+  gpt2      eng_Latn              27994          27994         0.0000         0.0000
+  gpt2      hin_Deva             200696         200475        -0.1108        -0.0172
+  gpt2      kan_Knda             367388         367427         0.0109         0.0013
+  gpt2      tam_Taml             420194         420200         0.0010         0.0001
+  gpt2      tel_Telu             350848         350863         0.0029         0.0003
+  gpt2      mal_Mlym             409994         410006         0.0027         0.0003
+  gpt2      ben_Beng             259783         258460        -0.4934         0.5229
+  gpt2      mar_Deva             212489         212489         0.0000         0.0000
+  o200k     eng_Latn              27300          27300         0.0000         0.0000
+  o200k     hin_Deva              42248          42277         0.0638         0.1669
+  o200k     kan_Knda              52893          52911         0.0333         0.0251
+  o200k     tam_Taml              53201          53205         0.0051         0.0042
+  o200k     tel_Telu              51892          51900         0.0103         0.0082
+  o200k     mal_Mlym              52588          52592         0.0060         0.0039
+  o200k     ben_Beng              46009          45590        -0.8978         0.1108
+  o200k     mar_Deva              48786          48786         0.0000         0.0000
+  sarvam1   eng_Latn              31914          31914         0.0000         0.0000
+  sarvam1   hin_Deva              35551          35935         1.0856         1.2221
+  sarvam1   kan_Knda              38163          38200         0.0989         0.0935
+  sarvam1   tam_Taml              36389          36393         0.0075         0.0066
+  sarvam1   tel_Telu              36244          36263         0.0351         0.0332
+  sarvam1   mal_Mlym              42624          42629         0.0099         0.0090
+  sarvam1   ben_Beng              35149          40282        14.0277        15.4490
+  sarvam1   mar_Deva              33669          33669         0.0000         0.0000
+
+E8  inject blank and whitespace-only lines into the sample files; v0 output must not change
+  eng: +14 blank/ws lines -> identical=True
+  hin: +14 blank/ws lines -> identical=True
+
+E9  run the original script on two edge-case inputs
+  special_token_text: 'The model emitted <|endoftext|> early.\n' -> returncode 1, ValueError: Encountered text corresponding to disallowed special token '<|endoftext|>'.
+  blank_only_file: '\n   \n' -> returncode 1, ZeroDivisionError: division by zero
+
+E10 sample corpora: same line number vs content-matched pairs (text as written)
+  gpt2     all 10 lines         eng   96  hin  459  hin/eng = 4.78
+  gpt2     3 close pairs        eng   24  hin  150  hin/eng = 6.25
+  gpt2     3 close + 2 partial  eng   47  hin  242  hin/eng = 5.15
+  o200k    all 10 lines         eng   94  hin  100  hin/eng = 1.06
+  o200k    3 close pairs        eng   23  hin   32  hin/eng = 1.39
+  o200k    3 close + 2 partial  eng   45  hin   53  hin/eng = 1.18
+  sarvam1  all 10 lines         eng  107  hin   84  hin/eng = 0.79
+  sarvam1  3 close pairs        eng   26  hin   27  hin/eng = 1.04
+  sarvam1  3 close + 2 partial  eng   52  hin   43  hin/eng = 0.83
+
+wrote /home/suryansh/Projects/chonga/your-submission/partA/audit/audit_results.json
