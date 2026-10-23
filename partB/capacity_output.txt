@@ -1,0 +1,54 @@
+== B1  KV-cache bytes per token and concurrent sequences
+  bytes/token = 2 (K,V) x 28 layers x 8 kv_heads x 128 head_dim x 2 B = 114,688 B = 112 KiB
+  usable = 24 GB x 0.92 = 22.08 GB; weights = 4.2e9 x 2 B = 8.40 GB; overhead = 1.6 GB
+  KV pool = 22.08 - 8.40 - 1.6 = 12.08 GB -> 105,329 tokens
+  one 4096-token sequence = 469,762,048 B = 448 MiB = 0.4698 GB -> 25.72 -> max 25 concurrent sequences
+  sensitivity (24 GiB / 1.6 GiB reading): KV pool 12.66 GiB -> 118,497 tokens -> 28 sequences
+  cross-check vs log: implied KV capacity = batch x (prompt+gen) / kv_cache_util (peak; util has 2 decimals)
+    line batch prompt  peak tok kv_util implied cap pred util preempted batch-maxseq
+       2     1    512       768    0.01      76,800      0.01         0             
+       3     2    512     1,536    0.01     153,600      0.01         0             
+       4     4    512     3,072    0.03     102,400      0.03         0             
+       5     8    512     6,144    0.06     102,400      0.06         0             
+       6    16    512    12,288    0.12     102,400      0.12         0             
+       7    32    512    24,576    0.23     106,852      0.23         0             
+       8    64    512    49,152    0.47     104,579      0.47         0             
+       9     4   3584    16,384    0.16     102,400      0.16         0            0
+      10     8   3584    32,768    0.31     105,703      0.31         0            0
+      11    16   3584    65,536    0.62     105,703      0.62         0            0
+      12    24   3584    98,304    0.93     105,703      0.93         0            0
+      13    32   3584   131,072    0.97     135,126      1.00         7            7
+      14    48   3584   196,608    0.97     202,689      1.00        23           23
+
+== B2  prompt_len=3584 sweep vs naive scaling
+  line batch  wall_s  reported naive(lin) vs naive gen tok/s ttft_p50 itl_p50 preempt kv_util
+     9     4   28.98     565.4      267.9   111.0%      70.7    483.2   51.33       0    0.16
+    10     8   36.30     902.6      535.8    68.5%     112.8    519.0   62.26       0    0.31
+    11    16   49.97    1311.4     1071.6    22.4%     163.9    498.3   77.20       0    0.62
+    12    24   61.16    1607.4     1607.4    -0.0%     200.9    500.5   96.07       0    0.93
+    13    32   94.71    1384.0     2143.2   -35.4%     173.0    636.9  101.79       7    0.97
+    14    48  151.41    1298.5     3214.8   -59.6%     162.3    955.4  100.00      23    0.97
+  batch 32 vs 24: reported -13.9%, generated -13.9%, wall 1.55x for 1.33x the work
+  batch 48 vs 24: reported -19.2%, generated -19.2%, wall 2.48x for 2.00x the work
+  decode-step memory model (mean context 3840 tokens, peak BW 300 GB/s):
+    calibrate on batch 24: 18.97 GB/step -> 63.2 ms at peak BW; observed itl 96.07 ms -> effective 66% of peak BW
+    if 25 running: 19.41 GB/step -> 98.3 ms predicted itl at the same efficiency
+    if 32 running: 22.49 GB/step -> 113.9 ms predicted itl at the same efficiency
+    if 48 running: 29.54 GB/step -> 149.6 ms predicted itl at the same efficiency
+  FORECAST max_num_seqs=24 (no preemption; extra requests queue). Closed-burst wall = waves of measured rows:
+    32 requests: 97.46 s (observed 94.71) -> 168.1 gen tok/s (observed 173.0, -2.8%)
+    48 requests: 122.32 s (observed 151.41) -> 200.9 gen tok/s (observed 162.3, +23.8%)
+    sustained load (>= 24 in flight): steady state = measured batch-24 row = 200.9 gen tok/s per GPU = 0.392 req/s
+
+== B3  what reported_tok_s counts, and honest generated-token goodput (batch=24, prompt_len=3584)
+  reported_tok_s == (prompt_len + gen_len) x num_requests / wall_clock_s on all 13 rows (max deviation 0.022%) -> the counter includes prompt (prefill) tokens
+  CSV line 12: batch_size=24, prompt_len=3584, gen_len=512, num_requests=24, wall_clock_s=61.16, reported_tok_s=1607.4, itl_ms_p50=96.07
+  way 1 (requests x gen_len / wall):  24 x 512 / 61.16 s = 200.92 tok/s
+  way 2 (counter x generated share):  1607.4 x 512/(3584+512) = 1607.4 x 0.1250 = 200.93 tok/s
+  agreement: 0.005% (CSV rounding)
+  bound (steady-state decode only): batch / itl_p50 = 24 / 0.09607 s = 249.8 tok/s; goodput is 80% of it (prefill + ramp-down take the rest of wall time)
+  requests/s = 24 / 61.16 = 0.392
+  REPORT 'longer prompts are better' (batch 16): reported 883.2 vs 1311.4; generated 294.5 vs 163.9 tok/s (-44.3% for long)
+  REPORT 'batch 48 -> ~3200': 1607.4 x 48/24 = 3214.8; the log already has batch 48: reported 1298.5, generated 162.3 tok/s
+
+wrote /home/suryansh/Projects/chonga/your-submission/partB/results.json

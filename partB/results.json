@@ -1,0 +1,269 @@
+{
+ "spec": {
+  "params": 4200000000.0,
+  "layers": 28,
+  "d_model": 3072,
+  "q_heads": 24,
+  "kv_heads": 8,
+  "head_dim": 128,
+  "weight_bytes": 2,
+  "kv_bytes": 2,
+  "gpu_mem_gb": 24,
+  "gpu_mem_util": 0.92,
+  "overhead_gb": 1.6,
+  "max_model_len": 4096,
+  "mem_bw_gbs": 300,
+  "peak_tflops": 121
+ },
+ "B1": {
+  "kv_bytes_per_token": 114688,
+  "weights_bytes": 8400000000.0,
+  "usable_bytes": 22080000000.0,
+  "kv_pool_bytes": 12080000000.0,
+  "kv_pool_tokens": 105329.24107142857,
+  "bytes_per_seq": 469762048,
+  "max_concurrent_seqs": 25,
+  "gib_reading_seqs": 28,
+  "rows": [
+   {
+    "csv_line": 2,
+    "batch_size": 1,
+    "prompt_len": 512,
+    "peak_tokens": 768,
+    "kv_cache_util": 0.01,
+    "implied_capacity": 76800.0,
+    "predicted_util": 0.007291422516556292,
+    "preempted_seqs": 0,
+    "predicted_overflow": null
+   },
+   {
+    "csv_line": 3,
+    "batch_size": 2,
+    "prompt_len": 512,
+    "peak_tokens": 1536,
+    "kv_cache_util": 0.01,
+    "implied_capacity": 153600.0,
+    "predicted_util": 0.014582845033112584,
+    "preempted_seqs": 0,
+    "predicted_overflow": null
+   },
+   {
+    "csv_line": 4,
+    "batch_size": 4,
+    "prompt_len": 512,
+    "peak_tokens": 3072,
+    "kv_cache_util": 0.03,
+    "implied_capacity": 102400.0,
+    "predicted_util": 0.02916569006622517,
+    "preempted_seqs": 0,
+    "predicted_overflow": null
+   },
+   {
+    "csv_line": 5,
+    "batch_size": 8,
+    "prompt_len": 512,
+    "peak_tokens": 6144,
+    "kv_cache_util": 0.06,
+    "implied_capacity": 102400.0,
+    "predicted_util": 0.05833138013245034,
+    "preempted_seqs": 0,
+    "predicted_overflow": null
+   },
+   {
+    "csv_line": 6,
+    "batch_size": 16,
+    "prompt_len": 512,
+    "peak_tokens": 12288,
+    "kv_cache_util": 0.12,
+    "implied_capacity": 102400.0,
+    "predicted_util": 0.11666276026490068,
+    "preempted_seqs": 0,
+    "predicted_overflow": null
+   },
+   {
+    "csv_line": 7,
+    "batch_size": 32,
+    "prompt_len": 512,
+    "peak_tokens": 24576,
+    "kv_cache_util": 0.23,
+    "implied_capacity": 106852.17391304347,
+    "predicted_util": 0.23332552052980135,
+    "preempted_seqs": 0,
+    "predicted_overflow": null
+   },
+   {
+    "csv_line": 8,
+    "batch_size": 64,
+    "prompt_len": 512,
+    "peak_tokens": 49152,
+    "kv_cache_util": 0.47,
+    "implied_capacity": 104578.72340425533,
+    "predicted_util": 0.4666510410596027,
+    "preempted_seqs": 0,
+    "predicted_overflow": null
+   },
+   {
+    "csv_line": 9,
+    "batch_size": 4,
+    "prompt_len": 3584,
+    "peak_tokens": 16384,
+    "kv_cache_util": 0.16,
+    "implied_capacity": 102400.0,
+    "predicted_util": 0.15555034701986756,
+    "preempted_seqs": 0,
+    "predicted_overflow": 0
+   },
+   {
+    "csv_line": 10,
+    "batch_size": 8,
+    "prompt_len": 3584,
+    "peak_tokens": 32768,
+    "kv_cache_util": 0.31,
+    "implied_capacity": 105703.22580645162,
+    "predicted_util": 0.3111006940397351,
+    "preempted_seqs": 0,
+    "predicted_overflow": 0
+   },
+   {
+    "csv_line": 11,
+    "batch_size": 16,
+    "prompt_len": 3584,
+    "peak_tokens": 65536,
+    "kv_cache_util": 0.62,
+    "implied_capacity": 105703.22580645162,
+    "predicted_util": 0.6222013880794702,
+    "preempted_seqs": 0,
+    "predicted_overflow": 0
+   },
+   {
+    "csv_line": 12,
+    "batch_size": 24,
+    "prompt_len": 3584,
+    "peak_tokens": 98304,
+    "kv_cache_util": 0.93,
+    "implied_capacity": 105703.2258064516,
+    "predicted_util": 0.9333020821192054,
+    "preempted_seqs": 0,
+    "predicted_overflow": 0
+   },
+   {
+    "csv_line": 13,
+    "batch_size": 32,
+    "prompt_len": 3584,
+    "peak_tokens": 131072,
+    "kv_cache_util": 0.97,
+    "implied_capacity": 135125.7731958763,
+    "predicted_util": 1.0,
+    "preempted_seqs": 7,
+    "predicted_overflow": 7
+   },
+   {
+    "csv_line": 14,
+    "batch_size": 48,
+    "prompt_len": 3584,
+    "peak_tokens": 196608,
+    "kv_cache_util": 0.97,
+    "implied_capacity": 202688.65979381444,
+    "predicted_util": 1.0,
+    "preempted_seqs": 23,
+    "predicted_overflow": 23
+   }
+  ]
+ },
+ "B2": {
+  "sweep": [
+   {
+    "csv_line": 9,
+    "batch_size": 4,
+    "wall_clock_s": 28.98,
+    "reported_tok_s": 565.4,
+    "naive_linear_from_peak": 267.90000000000003,
+    "gen_tok_s": 70.66942719116632,
+    "itl_ms_p50": 51.33,
+    "preempted_seqs": 0,
+    "kv_cache_util": 0.16
+   },
+   {
+    "csv_line": 10,
+    "batch_size": 8,
+    "wall_clock_s": 36.3,
+    "reported_tok_s": 902.6,
+    "naive_linear_from_peak": 535.8000000000001,
+    "gen_tok_s": 112.8374655647383,
+    "itl_ms_p50": 62.26,
+    "preempted_seqs": 0,
+    "kv_cache_util": 0.31
+   },
+   {
+    "csv_line": 11,
+    "batch_size": 16,
+    "wall_clock_s": 49.97,
+    "reported_tok_s": 1311.4,
+    "naive_linear_from_peak": 1071.6000000000001,
+    "gen_tok_s": 163.9383630178107,
+    "itl_ms_p50": 77.2,
+    "preempted_seqs": 0,
+    "kv_cache_util": 0.62
+   },
+   {
+    "csv_line": 12,
+    "batch_size": 24,
+    "wall_clock_s": 61.16,
+    "reported_tok_s": 1607.4,
+    "naive_linear_from_peak": 1607.4000000000003,
+    "gen_tok_s": 200.91563113145847,
+    "itl_ms_p50": 96.07,
+    "preempted_seqs": 0,
+    "kv_cache_util": 0.93
+   },
+   {
+    "csv_line": 13,
+    "batch_size": 32,
+    "wall_clock_s": 94.71,
+    "reported_tok_s": 1384.0,
+    "naive_linear_from_peak": 2143.2000000000003,
+    "gen_tok_s": 172.99123640587055,
+    "itl_ms_p50": 101.79,
+    "preempted_seqs": 7,
+    "kv_cache_util": 0.97
+   },
+   {
+    "csv_line": 14,
+    "batch_size": 48,
+    "wall_clock_s": 151.41,
+    "reported_tok_s": 1298.5,
+    "naive_linear_from_peak": 3214.8000000000006,
+    "gen_tok_s": 162.31424608678424,
+    "itl_ms_p50": 100.0,
+    "preempted_seqs": 23,
+    "kv_cache_util": 0.97
+   }
+  ],
+  "peak_batch": 24,
+  "bw_efficiency": 0.6581883376704486,
+  "forecast": [
+   {
+    "num_requests": 32,
+    "forecast_wall_s": 97.46,
+    "forecast_gen_tok_s": 168.10999384362816,
+    "observed_wall_s": 94.71,
+    "observed_gen_tok_s": 172.99123640587055
+   },
+   {
+    "num_requests": 48,
+    "forecast_wall_s": 122.32,
+    "forecast_gen_tok_s": 200.91563113145847,
+    "observed_wall_s": 151.41,
+    "observed_gen_tok_s": 162.31424608678424
+   }
+  ]
+ },
+ "B3": {
+  "csv_line": 12,
+  "method1": 200.91563113145847,
+  "method2": 200.925,
+  "decode_bound": 249.81784115748937,
+  "req_per_s": 0.3924133420536298,
+  "max_counter_deviation": 0.00021874999999993427
+ }
+}
