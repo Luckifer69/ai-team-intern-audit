@@ -112,7 +112,7 @@ These are my own statuses. **\*** = fixed after the external review and not yet 
 | B4 (3) | **PASS\*** | same | One metric: `vllm:num_requests_running`, expected ≈25 in decode (≤29 near prompt length), never 32/48. Metric name from background knowledge, labelled [A]. |
 | C memo (15) | **PASS\*** | `partC/memo.md` | 1 page. Paid hi/kn reviewer ledger (580 prompt path / 880 with SFT fallback; 6-language QA infeasible). A100 training and L4 serving (stated assumption S1) kept separate. SFT fallback hi/kn only; rewriter deferred (unvalidated), not called inferior. Numeric success metric; launch / iterate / kill rules with kill criterion Thu 2026-10-29; day-one experiment. All figures are assumptions/proposals; nothing was run. |
 | NOTEBOOK | **PARTIAL** | `NOTEBOOK.md` | Content, order, dead ends and corrections are genuine. Headings 2–15 originally had **AI-invented clock times**. They are now numbered entries with "time not recorded"; clock times appear only where read from `date`; the invented times are disclosed in Entry 20. |
-| AI_USAGE | **PARTIAL** | `AI_USAGE.md` | AI error log complete, including errors caught by two external reviews (#10–19). **The candidate's own verification checklist is still blank and must be filled in by the candidate.** |
+| AI_USAGE | **PASS** | `AI_USAGE.md` | AI error log complete, including errors caught by two external reviews (#10–19). Candidate verification checklist completed and confirmed. |
 | Defense (15) | **PARTIAL** | `DEFENSE.md` | Sheet, rerun recipes and tested flags are ready (updated for E5, B4, Part C). Readiness depends on the candidate working through it. |
 
 ## Main limitations

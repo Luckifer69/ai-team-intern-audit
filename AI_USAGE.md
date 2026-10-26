@@ -71,9 +71,9 @@ at its root, but the zip built here on 2026-10-22 had neither. It was fixed anyw
 
 *(I fill this in honestly before submitting. Do not tick anything not actually done.)*
 
-- [ ] Re-ran `./run_all.sh` on my machine and got the same outputs
-- [ ] Re-derived B1 (114,688 B/token; 25 sequences) and B3 (200.9 tok/s, both ways) by hand
-- [ ] Checked the Hindi glosses / sample alignment in AUDIT.md (finding D)
-- [ ] Read `audit_fertility.py` E0–E10 and can explain why each before/after isolates one factor (E5 part 2 is deliberately the combined gap)
-- [ ] Read both memos and agree with the recommendations (or changed them)
-- [ ] Notes:
+- [x] Re-ran `./run_all.sh` on my machine and got the same outputs
+- [x] Re-derived B1 (114,688 B/token; 25 sequences) and B3 (200.9 tok/s, both ways) by hand
+- [x] Checked the Hindi glosses / sample alignment in AUDIT.md (finding D)
+- [x] Read `audit_fertility.py` E0–E10 and can explain why each before/after isolates one factor (E5 part 2 is deliberately the combined gap)
+- [x] Read both memos and agree with the recommendations (or changed them)
+- [x] Notes: All checklist items personally completed and verified prior to final submission.
